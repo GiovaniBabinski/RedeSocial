@@ -1,0 +1,23 @@
+Rede social criada em Django que possui as seguintes funcionalidades:
+
+ -- Registro de Conta de Usuário
+ -- Autenticação de Login
+ -- Possibilidade de alterar a senha do usuário
+ -- Compartilhar posts no feed entre os usuários
+ -- Acesso aos detalhes da publicação, como, quem postou, data e horário ( Fuso América/São Paulo)
+ -- Controle de acesso aos usuários, ou seja, os usuários podem atualizar e excluir apenas regsitros que eles mesmos publicaram
+ -- Controle de acesso a barra da navegação, ou seja, só depois de o usuário fazer login na conta, ele terá acesso às funcionalidades do sistema
+ -- Ferramenta de pesquisa para realizar buscas no feed e encontrar publicações específicas
+ -- Controle de páginas no feed
+
+
+
+
+
+
+
+
+
+
+
+funcionalidades de registrar conta de usuário, entrar na conta e sair. Contém um feed de publicações onde os usuários criam posts e compartilham entre usuários, com controle de acesso a outros usuários, ou seja, os usuários só podem atualizar ou excluir os posts que eles mesmos publicarem, sem interferir na publicação de outros. Também há um controle na barra de navegação em que só depois que o usuário fazer login Ao clicar sobre o post, levará à uma página com os detalhes da publicação, como quem publicou, a data e o horário da publicação, com o fuso horário ajustado para: América/ São Paulo. 

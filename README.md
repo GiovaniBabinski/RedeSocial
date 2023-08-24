@@ -1,1 +1,0 @@
-Rede social criada em Django que possui funcionalidades de registrar conta de usuário, entrar na conta e sair. Contém um feed de publicações onde os usuários criam posts e compartilham entre usuários, com controle de acesso a outros usuários, ou seja, para atualizar ou excluir um post
