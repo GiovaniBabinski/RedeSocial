@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} Publicações {% endblock %}
+
+{% block style %}
+<style>
+ .decorat{
+ text-decoration:None;
+ }
+
+ .tamanho{
+ width:800px;
+ margin:0;
+ }
+
+ </style>
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container mt-4 ">
+<h1 class="titulo">Publicações</h1>
+ <hr/>
+   {% for post in posts_list %}
+
+ <div class="container p-2 bg-light mb-5 mt-5 tamanho">
+     <span class="badge bg-warning rounded-pill fs-6">{{post.autor}}</span>
+     <a class="mx-5 fs-5 decorat" href="{% url 'post_detalhes' post.slug %}">{{post.titulo}}</a>
+
+
+ </div>
+
+   {% endfor %}
+ {% include 'conta/pagination.html' with page=posts_list %}
+ </div>
+
+{% endblock %}
+

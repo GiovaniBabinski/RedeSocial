@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title%} Detalhes da publicação {% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+
+{% block body %}
+<div class="container mt-5 bg-warning text-primary p-3 rounded" >
+    <h3>{{post.titulo}}</h3>
+    <p>{{post.descricao}}</p>
+    <b class="bagde bg-white text-primary p-1">Por:  {{post.autor}} em {{post.publicado}}</b>
+
+    {% if request.user == post.autor %}
+
+    <div class="mt-5">
+         <a class="btn btn-success" href="{% url 'update_post' post.slug %}">Atualizar</a>
+         <a class="btn btn-danger" href="{% url 'delete_post' post.slug %}">Deletar</a>
+    </div>
+
+    {% endif %}
+
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %} Done {% endblock %}
+
+{% block body %}
+<div class="container">
+  <h3>Bem vindo!</h3>
+  <p>Sua conta foi criada com sucesso, <a href="{% url 'user_login' %}">Logar agora</a></p>
+
+</div>
+
+{% endblock %}

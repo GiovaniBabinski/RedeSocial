@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary ">
+  <div class="container navbar bg-primary p-2 rounded ">
+    <a class="navbar-brand bg-white text-primary p-2 mx-2 rounded" href="{% url 'posts_list' %}">Netuno</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          {% if request.user.is_authenticated %}
+
+         <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="{% url 'posts_list' %}">Inicio</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link disabled  mx-2 bg-light text-danger rounded-pill " aria-disabled="true">Bem Vindo {{user.username}}!</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link  text-white" href="{% url 'post_form' %}">Criar publicação</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link active  text-white" aria-current="page" href="{% url 'user_logout' %}">Sair da conta</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle  text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Perfil
+          </a>
+          <ul class="dropdown-menu ">
+            <li><a class="dropdown-item  " href="{% url 'password_change' %}">Alterar senha</a></li>
+          </ul>
+        </li>
+           <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Faça a busca" aria-label="Search" name="q">
+              <button class="btn btn-outline-warning" type="submit">Buscar</button>
+           </form>
+
+          {% else %}
+
+         <li class="nav-item">
+          <a class="nav-link active  text-white" aria-current="page" href="{% url 'user_login' %}">Login</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link active  text-white" aria-current="page" href="{% url 'register' %}">Registrar</a>
+        </li>
+
+          {% endif %}
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
