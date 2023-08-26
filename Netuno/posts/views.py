@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 
+
+# Views referentes às publicações postadas
 @login_required
 def posts_list(request):
 
@@ -26,12 +28,49 @@ def posts_list(request):
 
     return render(request,'posts.html', {"posts_list":posts, 'page':page})
 
+
+@login_required
+def post_form(request):
+    if request.method == 'POST':
+        new_post = PostRegistrationForm(request.POST)
+
+        if new_post.is_valid():
+            post = new_post.save(commit=False)
+            post.autor = request.user
+            post.save()
+            return redirect('posts_list')
+    else:
+        new_post = PostRegistrationForm()
+    return render(request,'conta/add_post.html',{'new_post':new_post})
+
 @login_required
 def post_detalhes(request,slug):
     post = get_object_or_404(Post, slug=slug)
     return render(request,'detalhes_post.html',{'post':post})
 
 
+@login_required
+def update_post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    form = UpdatePostForm(request.POST or None, instance=post)
+
+    if form.is_valid():
+        form.save()
+        return redirect("posts_list")
+
+    return render(request,'conta/update.html',{'form':form})
+
+
+@login_required
+def delete_post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    post.delete()
+    return redirect("posts_list")
+
+
+
+
+#Views referentes a autenticação de login e registro de usuario
 def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -54,6 +93,7 @@ def user_login(request):
     return render(request,'registration/login.html',{'form':form})
 
 
+
 def register(request):
     if request.method == 'POST':
         user_form = UserRegistration(request.POST)
@@ -69,36 +109,6 @@ def register(request):
 
     return render(request,'conta/register.html',{'user_form':user_form})
 
-@login_required
-def post_form(request):
-    if request.method == 'POST':
-        new_post = PostRegistrationForm(request.POST)
 
-        if new_post.is_valid():
-            post = new_post.save(commit=False)
-            post.autor = request.user
-            post.save()
-            return redirect('posts_list')
-    else:
-        new_post = PostRegistrationForm()
-    return render(request,'conta/add_post.html',{'new_post':new_post})
-
-@login_required
-def update_post(request, slug):
-    post = get_object_or_404(Post, slug=slug)
-    form = UpdatePostForm(request.POST or None, instance=post)
-
-    if form.is_valid():
-        form.save()
-        return redirect("posts_list")
-
-    return render(request,'conta/update.html',{'form':form})
-
-
-@login_required
-def delete_post(request, slug):
-    post = get_object_or_404(Post, slug=slug)
-    post.delete()
-    return redirect("posts_list")
 
 
