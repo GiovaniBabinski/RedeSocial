@@ -96,16 +96,16 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = 'pt-br'
+
 USE_I18N = True
 
 TIME_ZONE = 'America/Sao_Paulo'
 
 LOGIN_REDIRECT_URL = 'posts_list'
+
 LOGIN_URL ='user_login'
+
 LOGOUT_URL ='user_logout'
-
-
-
 
 USE_TZ = True
 
