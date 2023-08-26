@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import Post
 
+#Formularios referentes a autenticação do usuario
 class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
@@ -23,6 +24,7 @@ class UserRegistration(forms.ModelForm):
         return cd['password2']
 
 
+#Formularios referentes as publicações postadas
 class PostRegistrationForm(forms.ModelForm):
     class Meta:
         model = Post
